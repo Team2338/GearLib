@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.gearitforward</groupId>
+	<artifactId>gearlib</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<description>A library for logging data on FRC robots.</description>
+	<url>https://github.com/Team2338/GearLib/</url>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://www.opensource.org/licenses/mit-license.php</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Patrick Ubelhor</name>
+			<email>pubelhor@gmail.com</email>
+			<organization>FRC Team 2338 Gear it Forward</organization>
+			<organizationUrl>https://gearitforward.com</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git@github.com:Team2338/GearLib.git</connection>
+		<developerConnection>scm:git:ssh://github.com:Team2338/GearLib.git</developerConnection>
+		<url>https://github.com/Team2338/GearLib</url>
+	</scm>
+
+
+	<properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+</project>
