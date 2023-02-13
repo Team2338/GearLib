@@ -1,7 +1,7 @@
 plugins {
-    id 'java-library'
-    id 'maven-publish'
-    id 'signing'
+	id 'java-library'
+	id 'maven-publish'
+	id 'signing'
 }
 
 group = 'com.gearitforward.gearlib'
@@ -12,87 +12,87 @@ sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
 dependencies {}
 
 java {
-    withJavadocJar()
-    withSourcesJar()
+	withJavadocJar()
+	withSourcesJar()
 }
 
 publishing {
-    repositories {
+	repositories {
 //        maven {
 //            def releasesRepoUrl = layout.buildDirectory.dir('repos/releases')
 //            def snapshotsRepoUrl = layout.buildDirectory.dir('repos/snapshots')
 //            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
 //        }
-        maven {
-            def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-            def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+		maven {
+			def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+			def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
 
-            name = "OSSRH"
-            url = version.contains('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
-            credentials {
-                username = System.getenv("MAVEN_USERNAME")
-                password = System.getenv("MAVEN_PASSWORD")
-            }
-        }
-    }
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId = 'gearlib'
-            from components.java
-            versionMapping {
-                usage('java-api') {
-                    fromResolutionOf('runtimeClasspath')
-                }
-                usage('java-runtime') {
-                    fromResolutionResult()
-                }
-            }
-            pom {
-                description = 'A library for logging data on FRC robots.'
-                url = 'https://github.com/Team2338/GearLib'
-                properties = [
-                    "maven.compiler.source": sourceCompatibility.toString(),
-                    "maven.compiler.target": targetCompatibility.toString(),
-                    "project.build.sourceEncoding": "UTF-8"
-                ]
-                licenses {
-                    license {
-                        name = 'MIT License'
-                        url = 'https://www.opensource.org/licenses/mit-license.php'
-                    }
-                }
-                developers {
-                    developer {
-                        name = 'Patrick Ubelhor'
-                        email = 'pubelhor@gmail.com'
-                        organization = 'FRC Team 2338 Gear it Forward'
-                        organizationUrl = 'https://gearitforward.com'
-                    }
-                }
-                scm {
-                    connection = 'scm:git:git@github.com:Team2338/GearLib.git'
-                    developerConnection = 'scm:git:ssh://github.com:Team2338/GearLib.git'
-                    url = 'https://github.com/Team2338/GearLib'
-                }
-            }
-        }
-    }
+			name = "OSSRH"
+			url = version.contains('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+			credentials {
+				username = System.getenv("MAVEN_USERNAME")
+				password = System.getenv("MAVEN_PASSWORD")
+			}
+		}
+	}
+	publications {
+		mavenJava(MavenPublication) {
+			artifactId = 'gearlib'
+			from components.java
+			versionMapping {
+				usage('java-api') {
+					fromResolutionOf('runtimeClasspath')
+				}
+				usage('java-runtime') {
+					fromResolutionResult()
+				}
+			}
+			pom {
+				description = 'A library for logging data on FRC robots.'
+				url = 'https://github.com/Team2338/GearLib'
+				properties = [
+					"maven.compiler.source": sourceCompatibility.toString(),
+					"maven.compiler.target": targetCompatibility.toString(),
+					"project.build.sourceEncoding": "UTF-8"
+				]
+				licenses {
+					license {
+						name = 'MIT License'
+						url = 'https://www.opensource.org/licenses/mit-license.php'
+					}
+				}
+				developers {
+					developer {
+						name = 'Patrick Ubelhor'
+						email = 'pubelhor@gmail.com'
+						organization = 'FRC Team 2338 Gear it Forward'
+						organizationUrl = 'https://gearitforward.com'
+					}
+				}
+				scm {
+					connection = 'scm:git:git@github.com:Team2338/GearLib.git'
+					developerConnection = 'scm:git:ssh://github.com:Team2338/GearLib.git'
+					url = 'https://github.com/Team2338/GearLib'
+				}
+			}
+		}
+	}
 }
 
 signing {
 //    required { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
-    sign publishing.publications.mavenJava
+	sign publishing.publications.mavenJava
 }
 
 
 javadoc {
-    if (JavaVersion.current().isJava9Compatible()) {
-        options.addBooleanOption('html5', true)
-    }
+	if (JavaVersion.current().isJava9Compatible()) {
+		options.addBooleanOption('html5', true)
+	}
 }
