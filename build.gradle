@@ -5,8 +5,8 @@ plugins {
 }
 
 group = 'com.gearitforward.gearlib'
-version = '1.0.0-1' // Major.Minor.Bugfix-BuildNumber
-ext.isReleaseVersion = !version.contains("SNAPSHOT")
+version = '1.0.0-2' // Major.Minor.Bugfix-BuildNumber
+ext.isReleaseVersion = !version.contains('SNAPSHOT')
 
 sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
@@ -25,10 +25,10 @@ java {
 publishing {
 	repositories {
 		maven {
-			def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-			def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+			def releasesRepoUrl = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+			def snapshotsRepoUrl = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
 
-			name = "OSSRH"
+			name = 'OSSRH'
 			url = version.contains('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
 			credentials {
 				username = project.findProperty('MAVEN_USERNAME')// ?: System.getenv('MAVEN_USERNAME')
@@ -45,16 +45,17 @@ publishing {
 					fromResolutionOf('runtimeClasspath')
 				}
 				usage('java-runtime') {
-					fromResolutionResult()
+					fromResolutionResult(null)
 				}
 			}
 			pom {
+				name = 'GearLib'
 				description = 'A library for logging data on FRC robots.'
 				url = 'https://github.com/Team2338/GearLib'
 				properties = [
-					"maven.compiler.source": sourceCompatibility.toString(),
-					"maven.compiler.target": targetCompatibility.toString(),
-					"project.build.sourceEncoding": "UTF-8"
+					'maven.compiler.source': sourceCompatibility.toString(),
+					'maven.compiler.target': targetCompatibility.toString(),
+					'project.build.sourceEncoding': 'UTF-8'
 				]
 				licenses {
 					license {
